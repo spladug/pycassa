@@ -1013,7 +1013,7 @@ class TestDateTypes(unittest.TestCase):
         self.cf = ColumnFamily(pool, 'Standard1')
         self.cf.column_validators['date'] = OldPycassaDateType()
 
-        d = datetime.now()
+        d = datetime.utcnow()
         self.cf.insert('key1', {'date': d})
         self._compare_dates(self.cf.get('key1')['date'], d)
 
